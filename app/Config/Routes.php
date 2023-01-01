@@ -39,6 +39,10 @@ $routes->get('/', 'Dashboard::index');
 $routes->get('/login', 'Login::index');
 $routes->get('/keputusanCamat', 'KeputusanCamat::index');
 $routes->get('/keputusanCamat/(:any)', 'KeputusanCamat::viewNews/$1');
+$routes->group('/keputusan-camat', function ($routes) {
+    $routes->get('/', 'KeputusanCamat::index');
+});
+
 
 /*
  * --------------------------------------------------------------------
