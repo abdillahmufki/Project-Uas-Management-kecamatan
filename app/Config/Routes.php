@@ -38,6 +38,13 @@ $routes->set404Override();
 $routes->get('/', 'Dashboard::index');
 $routes->get('/login','Login::index');
 
+
+// ROUTING APARAT
+$routes->get('/aparat','Aparat::index');
+$routes->get('/get-aparat','Aparat::ajaxDatatable');
+$routes->get('/aparat-new','Aparat::create');
+$routes->add('/store-aparat','Aparat::store');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
