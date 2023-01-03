@@ -38,6 +38,12 @@ $routes->set404Override();
 $routes->get('/', 'Dashboard::index');
 $routes->get('/login','Login::index');
 
+
+$routes->group('admin', function($routes){
+    $routes->get('camat', 'Camat::index');
+
+});
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
