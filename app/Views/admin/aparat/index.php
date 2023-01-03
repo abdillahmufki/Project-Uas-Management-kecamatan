@@ -4,7 +4,7 @@
     <h1>Aparat</h1>
         <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="<?=base_url('/')?>">Home</a></li>
             <li class="breadcrumb-item active">Aparat</li>
         </ol>
     </nav>
@@ -15,8 +15,14 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Data Aparat</h5>
+              <?php if(session()->getFlashdata('message')) :?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <?=session()->getFlashdata('message');?>
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              <?php endif;?>
               <div style="margin-bottom:var(--bs-card-title-spacer-y)">
-                <a class="btn btn-primary" href="<?=base_url('aparat-new')?>">
+                <a class="btn btn-primary btn" href="<?=base_url('aparat/create')?>">
                   Tambah <i class="bi bi-plus"></i>
                 </a>
               </div>
@@ -24,25 +30,25 @@
                 <table class="table table-striped table-hover dt-responsive display nowrap"  id="table-aparat">
                   <thead>
                     <tr>
-                      <!-- <th scope="col">#</th> -->
-                      <th scope="col">Nama</th>
-                      <th scope="col">NIAP</th>
-                      <th scope="col">NIP</th>
-                      <th scope="col">Jenis Kelamin</th>
-                      <th scope="col">Tempat Lahir</th>
-                      <th scope="col">Tanggal Lahir</th>
-                      <th scope="col">Agama</th>
-                      <th scope="col">Pangkat Gol.</th>
-                      <th scope="col">Jabatan</th>
-                      <th scope="col">Pendidikan Terakhir</th>
-                      <th scope="col">Tgl Pengangkatan</th>
-                      <th scope="col">No. Pengangkatan </th>
-                      <th scope="col">Tgl Pemberhentian</th>
-                      <th scope="col">No. Pemberhentian</th>
-                      <th scope="col">Keterangan</th>
-                      <th scope="col">Kecamatan</th>
-                      <th scope="col">Kelurahan</th>
-                      <th scope="col">Tahun</th>
+                      <th>Nama</th>
+                      <th>NIAP</th>
+                      <th>NIP</th>
+                      <th>Jenis Kelamin</th>
+                      <th>Tempat Lahir</th>
+                      <th>Tanggal Lahir</th>
+                      <th>Agama</th>
+                      <th>Pangkat Gol.</th>
+                      <th>Jabatan</th>
+                      <th>Pendidikan Terakhir</th>
+                      <th>Tgl Pengangkatan</th>
+                      <th>No. Pengangkatan </th>
+                      <th>Tgl Pemberhentian</th>
+                      <th>No. Pemberhentian</th>
+                      <th>Keterangan</th>
+                      <th>Kecamatan</th>
+                      <th>Kelurahan</th>
+                      <th>Tahun</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -54,14 +60,32 @@
           </div>
         </div>
     </div>
+    <div id="confirm-dialog" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h2 class="h3">Apakah anda yakin?</h2>
+            <p>Data aparat akan dihapus secara permanen</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#" role="button" id="delete-button" class="btn btn-danger">Hapus</a>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+          </div>
+        </div>
+      </div>
+    </div>
   <script type="text/javascript">
+    function confirmToDelete(el){
+      $("#delete-button").attr("href", el.dataset.href);
+      $("#confirm-dialog").modal('show');
+    }
     $(document).ready(function() {
       //datatables
       $('#table-aparat').DataTable({
         "processing": true, //Feature control the processing indicator.
         "serverSide": true, //Feature control DataTables' server-side processing mode.
         "responsive": true,
-        "ajax": "<?= base_url('get-aparat')?>",
+        "ajax": "<?= base_url('aparat/get-aparat')?>",
         "columns": [
           {data:'nama_lengkap'},
           {data:'NIAP'},
@@ -80,16 +104,9 @@
           {data:'keterangan'},
           {data:'kecamatan_id'},
           {data:'kelurahan_id'},
-          {data:'tahun'}
+          {data:'tahun'},
+          {data:'action',orderable: false}
         ]
-
-        //Set column definition initialisation properties.
-        // "columnDefs": [
-        //   { 
-        //       "targets": [ 0 ], //first column / numbering column
-        //       "orderable": false, //set not orderable
-        //   },
-        // ],
       });
     });
   </script>

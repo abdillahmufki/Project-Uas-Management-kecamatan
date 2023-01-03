@@ -18,16 +18,18 @@ class Aparat extends Migration
         ],
         'nama_lengkap'       => [
           'type'           => 'VARCHAR',
-          'constraint'     => '60',
+          'constraint'     => 60,
           'null'           => false
         ],
         'NIAP'      => [
           'type'           => 'VARCHAR',
-          'constraint'     => 18
+          'constraint'     => 18,
+          'null'           => false
         ],
         'NIP'      => [
           'type'           => 'VARCHAR',
-          'constraint'     => 18
+          'constraint'     => 18,
+          'null'           => false
         ],
         'jenis_kelamin' => [
           'type'         => "ENUM",
@@ -36,43 +38,54 @@ class Aparat extends Migration
         ],
         'tempat_lahir'      => [
           'type'           => 'VARCHAR',
-          'constraint'     => 40
+          'constraint'     => 40,
+          'null'           => false
         ],
         'tanggal_lahir'    => [
-          'type'           => 'DATE'
+          'type'           => 'DATE',
+          'null'           => false
         ],
         'agama' => [
           'type'         => 'ENUM',
-          'constraint'   => "'Islam','Kristen','Hindu','Buddha','Katolik','Kong Hu Chu'"
+          'constraint'   => "'Islam','Kristen','Hindu','Buddha','Katolik','Kong Hu Chu'",
+          'null'           => false
         ],
         'pangkat_golongan' => [
           'type'           => 'VARCHAR',
-          'constraint'     => 255
+          'constraint'     => 100,
+          'null'           => true
         ],
         'jabatan' => [
           'type'           => 'VARCHAR',
-          'constraint'     => 40
+          'constraint'     => 80,
+          'null'           => true
         ],
         'pendidikan_terakhir' => [
           'type'         => 'ENUM',
-          'constraint'   => "'SD','SMP','SMA/SMK','D3','S1','S2','S3'"
+          'constraint'   => "'SD','SMP','SMA/SMK','D3','S1','S2','S3'",
+          'null'           => true
         ],
         'tanggal_pengangkatan'    => [
-          'type'           => 'DATE'
+          'type'           => 'DATE',
+          'null'           => true
         ],
         'nomor_pengangkatan'    => [
           'type'           => 'VARCHAR',
-          'constraint'     => 60
+          'constraint'     => 60,
+          'null'           => true
         ],
         'tanggal_pemberhentian'    => [
-          'type'           => 'DATE'
+          'type'           => 'DATE',
+          'null'           => true
         ],
         'nomor_pemberhentian'    => [
           'type'           => 'VARCHAR',
-          'constraint'     => 60
+          'constraint'     => 60,
+          'null'           => true
         ],
         'keterangan'    => [
-          'type'           => 'TEXT'
+          'type'           => 'TEXT',
+          'null'           => true
         ],
         'kecamatan_id'    => [
           'type'           => 'INT',
@@ -85,7 +98,8 @@ class Aparat extends Migration
           'null'      => false
         ],
         'tahun'    => [
-          'type'           => 'YEAR'
+          'type'           => 'YEAR',
+          'null'           => false
         ],
         'created_at'    => [
           'type'           => 'DATETIME',

@@ -40,10 +40,15 @@ $routes->get('/login','Login::index');
 
 
 // ROUTING APARAT
-$routes->get('/aparat','Aparat::index');
-$routes->get('/get-aparat','Aparat::ajaxDatatable');
-$routes->get('/aparat-new','Aparat::create');
-$routes->add('/store-aparat','Aparat::store');
+$routes->group('aparat',function ($routes){
+  $routes->get('','Aparat::index');
+  $routes->get('get-aparat','Aparat::ajaxDatatable');
+  $routes->get('create','Aparat::create'); //Form Create
+  $routes->add('store','Aparat::store'); //Action Create
+  $routes->get('edit/(:segment)','Aparat::edit/$1'); //Form Edit
+  $routes->get('delete/(:segment)/delete', 'Aparat::delete/$1');
+});
+// END ROUTING APARAT
 
 /*
  * --------------------------------------------------------------------
