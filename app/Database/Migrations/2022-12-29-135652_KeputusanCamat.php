@@ -13,29 +13,34 @@ class KeputusanCamat extends Migration
         $this->forge->addField([
             'id'          => [
                 'type'           => 'INT',
-                'constraint'     => 5,
+                'constraint'     => 11,
                 'unsigned'       => true,
                 'auto_increment' => true
             ],
-            'tanggalKeputusan' => [
+            'tanggal_keputusan' => [
                 'type' => 'date',
+                'null'  => false
             ],
             'nomor' => [
-                'type' => 'smallInt'
+                'type' => 'smallInt',
+                'null'  => false
             ],
             'tentang' => [
                 'type' => 'VARCHAR',
-                'constraint' => '255'
+                'constraint' => '255',
+                'null'  => false
             ],
             'uraian_singkat' => [
                 'type' => 'TEXT',
                 'null' => true,
             ],
             'tanggal_laporan' => [
-                'type' => 'date'
+                'type' => 'date',
+                'null'  => false
             ],
             'nomor_laporan' => [
                 'type' => 'smallInt',
+                'null'  => false
             ],
             'keterangan' => [
                 'type' => 'TEXT',
@@ -43,18 +48,21 @@ class KeputusanCamat extends Migration
             ],
             'kecamatan_id' => [
                 'type' => 'INT',
+                'null'  => false
             ],
             'kelurahan_id' => [
                 'type' => 'INT',
+                'null'  => false
             ],
             'tahun' => [
                 'type' => 'year',
+                'null'  => false
             ],
-            'createdAt' => [
+            'created_at' => [
                 'type' => 'DATETIME',
                 'null' => true,
             ],
-            'updatedAt' => [
+            'updated_at' => [
                 'type' => 'DATETIME',
                 'null' => true,
             ],

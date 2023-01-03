@@ -11,7 +11,7 @@ class KeputusanCamatModel extends Model
 
     protected $useAutoIncrement = true;
     protected $allowedFields = [
-        'tanggal_keputusan', 'nomor', 'tentang', 'auuraian_singkatthor',
+        'tanggal_keputusan', 'nomor', 'tentang', 'uraian_singkat',
         'tanggal_laporan', 'nomor_laporan', 'keterangan', 'kecamatan_id',
         'kelurahan_id', 'keterangan', 'tahun', 'createdAt', 'updatedAt'
     ];
