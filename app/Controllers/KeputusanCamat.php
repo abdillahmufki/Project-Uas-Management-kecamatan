@@ -22,7 +22,7 @@ class KeputusanCamat extends BaseController
             $builder = $db->table('KeputusanCamat');
             return DataTable::of($builder)
                 ->add('action', function ($row) {
-                    return '<a class="btn btn-warning btn-sm text-white" href="' . base_url('keputusan-camat/edit/' . $row->id) . '">Edit&nbsp;<i class="bi bi-pencil-fill"></i></a> <a class="btn btn-danger btn-sm" data-href="' . base_url('aparat/delete/' . $row->id . '/delete') . '" onclick="confirmToDelete(this)"><i class="bi bi-trash-fill"></i>&nbsp; Hapus</a>';
+                    return '<a class="btn btn-warning btn-sm text-white" href="' . base_url('keputusan-camat/edit/' . $row->id) . '">Edit&nbsp;<i class="bi bi-pencil-fill"></i></a> <a class="btn btn-danger btn-sm" data-href="' . base_url('keputusan-camat/delete/' . $row->id . '/delete') . '" onclick="confirmToDelete(this)"><i class="bi bi-trash-fill"></i>&nbsp; Hapus</a>';
                 }, 'last')
                 ->toJson(true);
         }
@@ -135,43 +135,14 @@ class KeputusanCamat extends BaseController
 
     public function edit($id)
     {
-        // ambil artikel yang akan diedit
-        $keputusanCamats = new KeputusanCamatModel();
-        $data['keputusanCamats'] = $keputusanCamats->where('id', $id)->first();
-
-        // lakukan validasi data artikel
-        $validation =  \Config\Services::validation();
-        $validation->setRules([
-            'id' => 'required',
-            'nomor' => 'required',
-            'tentang' => 'required',
-            'tanggalKeputusan' => 'required',
-            'uraianSingkat' => 'required',
-            'tanggalLaporan' => 'required',
-            'nomorLaporan' => 'required',
-            'keterangan' => 'required',
-            'kecamatanId' => 'required',
-            'tahun' => 'required',
-        ]);
-        $isDataValid = $validation->withRequest($this->request)->run();
-        // jika data vlid, maka simpan ke database
-        if ($isDataValid) {
-            $keputusanCamats->update($id, [
-                "nomor" => $this->request->getPost('nomor'),
-                "tentang" => $this->request->getPost('tentang'),
-                "tanggalKeputusan" => $this->request->getPost('tanggalKeputusan'),
-                "uraian_singkat" => $this->request->getPost('uraianSingkat'),
-                "tanggal_laporan" => $this->request->getPost('tanggalLaporan'),
-                "nomor_laporan" => $this->request->getPost('nomorLaporan'),
-                "keterangan" => $this->request->getPost('keterangan'),
-                "kecamatan_id" => $this->request->getPost('kecamatanId'),
-                "tahun" => $this->request->getPost('tahun'),
-            ]);
-            return redirect('keputusan-camat');
-        }
-
-        // tampilkan form edit
-        echo view('admin/keputusan-camat/edit', $data);
+        session()->setFlashdata('message', 'Data berhasil diedit');
+        $keputusanCamat = new KeputusanCamatModel();
+        $keputusanCamat = $keputusanCamat->where('id', $id)->first();
+        $data = [
+            'validation' => \Config\Services::validation(),
+            'keputusanCamat'     => $keputusanCamat
+        ];
+        return view('admin/keputusan-camat/create', $data);
     }
 
     //--------------------------------------------------------------------------

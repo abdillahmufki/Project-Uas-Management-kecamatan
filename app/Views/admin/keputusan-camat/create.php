@@ -55,7 +55,7 @@
             </div>
             <div class="col-md-4">
                 <label for="tanggalLaporan" class="form-label">Tanggal Laporan <span class="text-danger">*</span></label>
-                <input type="text" readonly placeholder="Masukan Tanggal Laporan" class="form-control <?= $validation->hasError('tanggalLaporan') ? 'is-invalid' : '' ?>" id="tanggalLaporan" name="tanggalLaporan" value="<?= $keputusanCamat["tanggalLaporan"] ?? old('tanggalLaporan') ?>" required>
+                <input type="text" readonly placeholder="Masukan Tanggal Laporan" class="form-control <?= $validation->hasError('tanggalLaporan') ? 'is-invalid' : '' ?>" id="tanggalLaporan" name="tanggalLaporan" value="<?= $keputusanCamat["tanggal_laporan"] ?? old('tanggalLaporan') ?>" required>
                 <script type="text/javascript">
                     $("#tanggalLaporan").datepicker({
                         language: "en",
@@ -69,7 +69,7 @@
             </div>
             <div class="col-md-4">
                 <label for="nomorLaporan" class="form-label"> Nomor Laporan <span class="text-danger">*</span></label>
-                <input type="text" placeholder="Masukan Nomor Laporan" class="form-control <?= $validation->hasError('nomorLaporan') ? 'is-invalid' : '' ?>" id="nomorLaporan" name="nomorLaporan" value="<?= $keputusanCamat["nomorLaporan"] ?? old('nomorLaporan') ?>">
+                <input type="text" placeholder="Masukan Nomor Laporan" class="form-control <?= $validation->hasError('nomorLaporan') ? 'is-invalid' : '' ?>" id="nomorLaporan" name="nomorLaporan" value="<?= $keputusanCamat["nomor_laporan"] ?? old('nomorLaporan') ?>">
                 <div class="invalid-feedback" required>
                     <?= $validation->getError('nomorLaporan') ?>
                 </div>
@@ -106,7 +106,7 @@
             </div>
             <div class="col-md-6">
                 <label for="uraianSingkat" class="form-label">Uraian Singkat</label>
-                <textarea name="uraianSingkat" class="form-control <?= $validation->hasError('pangkatGolongan') ? 'is-invalid' : '' ?>" id="uraianSingkat" cols="30" rows="4"><?= $keputusanCamat["uraianSingkat"] ?? old('uraianSingkat') ?></textarea>
+                <textarea name="uraianSingkat" class="form-control <?= $validation->hasError('pangkatGolongan') ? 'is-invalid' : '' ?>" id="uraianSingkat" cols="30" rows="4"><?= $keputusanCamat["uraian_singkat"] ?? old('uraianSingkat') ?></textarea>
                 <div class="invalid-feedback">
                     <?= $validation->getError('uraianSingkat') ?>
                 </div>
