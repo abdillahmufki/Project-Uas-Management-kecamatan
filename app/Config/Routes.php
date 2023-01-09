@@ -36,19 +36,30 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Dashboard::index');
-$routes->get('/login','Login::index');
+$routes->get('/login', 'Login::index');
 
 
 // ROUTING APARAT
-$routes->group('aparat',function ($routes){
-  $routes->get('','Aparat::index');
-  $routes->get('get-aparat','Aparat::ajaxDatatable');
-  $routes->get('create','Aparat::create'); //Form Create
-  $routes->add('store','Aparat::store'); //Action Create
-  $routes->get('edit/(:segment)','Aparat::edit/$1'); //Form Edit
-  $routes->get('delete/(:segment)/delete', 'Aparat::delete/$1');
+$routes->group('aparat', function ($routes) {
+    $routes->get('', 'Aparat::index');
+    $routes->get('get-aparat', 'Aparat::ajaxDatatable');
+    $routes->get('create', 'Aparat::create'); //Form Create
+    $routes->add('store', 'Aparat::store'); //Action Create
+    $routes->get('edit/(:segment)', 'Aparat::edit/$1'); //Form Edit
+    $routes->get('delete/(:segment)/delete', 'Aparat::delete/$1');
 });
 // END ROUTING APARAT
+
+// Route Keuputsan Camat
+
+$routes->group('keputusan-camat', function ($routes) {
+    $routes->get('', 'keputusanCamat::index');
+    $routes->get('get-keputusan-camat', 'keputusanCamat::ajaxDatatable');
+    $routes->get('create', 'keputusanCamat::create'); //Form Create
+    $routes->add('store', 'keputusanCamat::store'); //Action Create
+    $routes->get('edit/(:segment)', 'keputusanCamat::edit/$1'); //Form Edit
+    $routes->get('delete/(:segment)/delete', 'keputusanCamat::delete/$1');
+});
 
 /*
  * --------------------------------------------------------------------
