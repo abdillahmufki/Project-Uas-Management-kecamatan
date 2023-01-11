@@ -178,20 +178,25 @@
         </ul>
       </li> -->
 
-    <li class="nav-heading">Pages</li>
-    <li class="nav-item">
-      <a class="nav-link <?= (current_url(true)->getSegment(2) == "aparat") ? '' : 'collapsed' ?> " href="<?= base_url('aparat') ?>">
-        <i class="bi bi-person"></i>
-        <span>Aparat</span>
-      </a>
-    </li>
-
-    <li class="nav-item">
-      <a class="nav-link <?= (current_url(true)->getSegment(2) == "keputusan-camat") ? '' : 'collapsed' ?> " href="<?= base_url('keputusan-camat') ?>">
-        <i class="bi bi-journals"></i>
-        <span>Keputusan Camat</span>
-      </a>
-    </li>
+      <li class="nav-heading">Pages</li>
+      <li class="nav-item">
+        <a class="nav-link <?= (current_url(true)->getSegment(2) == "aparat") ? '' : 'collapsed' ?> " href="<?=base_url('aparat')?>">
+          <i class="bi bi-person"></i>
+          <span>Aparat</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link <?= (current_url(true)->getSegment(2) == "tanah") ? '' : 'collapsed' ?> " href="<?=base_url('tanah')?>">
+          <i class="bi bi-person"></i>
+          <span>Data Tanah</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link <?= (current_url(true)->getSegment(2) == "keputusan-camat") ? '' : 'collapsed' ?> " href="<?= base_url('keputusan-camat') ?>">
+          <i class="bi bi-journals"></i>
+          <span>Keputusan Camat</span>
+        </a>
+      </li>
 
     <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="users-profile.html">

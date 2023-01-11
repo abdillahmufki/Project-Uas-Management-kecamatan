@@ -87,13 +87,13 @@ class Aparat extends Migration
           'type'           => 'TEXT',
           'null'           => true
         ],
-        'kecamatan_id'    => [
-          'type'           => 'INT',
+        'kecamatan'    => [
+          'type'           => 'TEXT',
           'constraint'     => 255,
           'null'      => false
         ],
-        'kelurahan_id'    => [
-          'type'           => 'INT',
+        'kelurahan'    => [
+          'type'           => 'TEXT',
           'constraint'     => 255,
           'null'      => false
         ],
