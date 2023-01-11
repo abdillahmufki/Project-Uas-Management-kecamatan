@@ -8,7 +8,7 @@ $routes = Services::routes();
 // Load the system's routing file first, so that the app and ENVIRONMENT
 // can override as needed.
 if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
-    require SYSTEMPATH . 'Config/Routes.php';
+  require SYSTEMPATH . 'Config/Routes.php';
 }
 
 /*
@@ -42,14 +42,27 @@ $routes->post('login/process', 'Login::process');
 
 // ROUTING APARAT
 $routes->group('aparat', function ($routes) {
-    $routes->get('', 'Aparat::index');
-    $routes->get('get-aparat', 'Aparat::ajaxDatatable');
-    $routes->get('create', 'Aparat::create'); //Form Create
-    $routes->add('store', 'Aparat::store'); //Action Create
-    $routes->get('edit/(:segment)', 'Aparat::edit/$1'); //Form Edit
-    $routes->get('delete/(:segment)/delete', 'Aparat::delete/$1');
+  $routes->get('', 'Aparat::index');
+  $routes->get('get-aparat', 'Aparat::ajaxDatatable');
+  $routes->get('create', 'Aparat::create'); //Form Create
+  $routes->add('store', 'Aparat::store'); //Action Create
+  $routes->get('edit/(:segment)', 'Aparat::edit/$1'); //Form Edit
+  $routes->get('delete/(:segment)/delete', 'Aparat::delete/$1');
 });
 // END ROUTING APARAT
+
+
+// ROUTING INVENTARIS
+$routes->group('inventaris', function ($routes) {
+  $routes->get('', 'Inventaris::index');
+  $routes->get('get-inventaris', 'Inventaris::ajaxDatatable');
+  $routes->get('create', 'Inventaris::create'); //Form Create
+  $routes->add('store', 'Inventaris::store'); //Action Create
+  $routes->get('edit/(:segment)', 'Inventaris::edit/$1'); //Form Edit
+  $routes->get('delete/(:segment)/delete', 'Inventaris::delete/$1');
+  $routes->get('export', 'ExportExcel::export');
+});
+
 
 // ROUTING APARAT
 $routes->group('tanah',function ($routes){
@@ -102,5 +115,5 @@ $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
  * needing to reload it.
  */
 if (is_file(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
-    require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
+  require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }

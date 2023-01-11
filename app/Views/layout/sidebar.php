@@ -15,6 +15,15 @@
           <span>Aparat</span>
         </a>
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link <?= (current_url(true)->getSegment(2) == "inventaris") ? '' : 'collapsed' ?> " href="<?=base_url('inventaris')?>">
+          <i class="bi bi-archive"></i>
+          <span>Inventarisasi</span>
+        </a>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link collapsed" href="users-profile.html">
       <li class="nav-item">
         <a class="nav-link <?= (current_url(true)->getSegment(2) == "tanah") ? '' : 'collapsed' ?> " href="<?=base_url('tanah')?>">
           <i class="bi bi-person"></i>
