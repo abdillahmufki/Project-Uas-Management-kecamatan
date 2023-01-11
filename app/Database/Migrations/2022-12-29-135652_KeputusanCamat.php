@@ -46,13 +46,15 @@ class KeputusanCamat extends Migration
                 'type' => 'TEXT',
                 'null' => true,
             ],
-            'kecamatan_id' => [
-                'type' => 'INT',
-                'null'  => false
+            'kecamatan' => [
+                'type' => 'TEXT',
+                'null'  => false,
+                'constraint'  => 255,
             ],
-            'kelurahan_id' => [
-                'type' => 'INT',
-                'null'  => false
+            'kelurahan' => [
+                'type' => 'TEXT',
+                'null'  => false,
+                'constraint'  => 255,
             ],
             'tahun' => [
                 'type' => 'year',
