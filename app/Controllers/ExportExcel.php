@@ -47,7 +47,7 @@ class ExportExcel extends Controller
                 ->setCellValue('D' . $column, $data['keadaan_baik_awal'])
                 ->setCellValue('E' . $column, $data['keadaan_rusak_awal'])
                 ->setCellValue('F' . $column, $data['hapus_rusak'])
-                ->setCellValue('G' . $column, $data[' hapus_dijual'])
+                ->setCellValue('G' . $column, $data['hapus_dijual'])
                 ->setCellValue('H' . $column, $data['hapus_disumbangkan'])
                 ->setCellValue('I' . $column, $data['tanggal_penghapusan'])
                 ->setCellValue('J' . $column, $data['keadaan_baik_akhir'])

@@ -81,7 +81,7 @@
     $("#confirm-dialog").modal('show');
   }
   $(document).ready(function() {
-    //datatables
+    //dataables
     $('#table-inventaris').DataTable({
       "processing": true, //Feature control the processing indicator.
       "serverSide": true, //Feature control DataTables' server-side processing mode.
@@ -122,9 +122,6 @@
         },
         {
           data: 'keadaan_rusak_akhir'
-        },
-        {
-          data: 'keterangan'
         },
         {
           data: 'keterangan'
