@@ -52,7 +52,10 @@ class Inventaris extends BaseController
         ]
       ],
       'jml_brg_dibelisendiri' => [
-        'rules' => ['permit_empty', 'numeric']
+        'rules' => ['permit_empty', 'numeric'],
+        'errors'    => [
+          'max_length'  => 'Maksimal 20 karakter!',
+        ]
       ],
       'jml_brg_bantuanpemerintah' => [
         'rules' => ['permit_empty', 'numeric', 'max_length[20]'],
@@ -61,40 +64,40 @@ class Inventaris extends BaseController
         ]
       ],
       'jml_brg_sumbangan' => [
-        'rules' => ['permit_empty', 'numeric']
-        // 'errors'    => [
-        //   'max_length'  => 'Maksimal 20 karakter!',
-        // ]
+        'rules' => ['permit_empty', 'numeric'],
+        'errors'    => [
+          'numeric'  => 'Masukkan Angka!',
+        ]
       ],
       'keadaan_baik_awal' => [
-        'rules' => ['permit_empty', 'numeric']
-        // 'errors'    => [
-        //   'max_length'  => 'Maksimal 20 karakter!',
-        // ]
+        'rules' => ['permit_empty', 'numeric'],
+        'errors'    => [
+          'numeric'  => 'Masukkan Angka!',
+        ]
       ],
       'keadaan_rusak_awal' => [
-        'rules' => ['permit_empty', 'numeric']
-        // 'errors'    => [
-        //   'max_length'  => 'Maksimal 20 karakter!',
-        // ]
+        'rules' => ['permit_empty', 'numeric'],
+        'errors'    => [
+          'numeric'  => 'Masukkan Angka!',
+        ]
       ],
       'hapus_rusak' => [
-        'rules' => ['permit_empty', 'numeric']
-        // 'errors'    => [
-        //   'max_length'  => 'Maksimal 20 karakter!',
-        // ]
+        'rules' => ['permit_empty', 'numeric'],
+        'errors'    => [
+          'numeric'  => 'Masukkan Angka!',
+        ]
       ],
       'hapus_dijual' => [
-        'rules' => ['permit_empty', 'numeric']
-        // 'errors'    => [
-        //   'max_length'  => 'Maksimal 20 karakter!',
-        // ]
+        'rules' => ['permit_empty', 'numeric'],
+        'errors'    => [
+          'numeric'  => 'Masukkan Angka!',
+        ]
       ],
       'hapus_disumbangkan' => [
-        'rules' => ['permit_empty', 'numeric']
-        // 'errors'    => [
-        //   'max_length'  => 'Maksimal 20 karakter!',
-        // ]
+        'rules' => ['permit_empty', 'numeric'],
+        'errors'    => [
+          'numeric'  => 'Masukkan Angka!',
+        ]
       ],
       'tanggal_penghapusan'   => [
         'rules' => ['permit_empty', 'valid_date[Y-m-d]'],
@@ -104,15 +107,15 @@ class Inventaris extends BaseController
       ],
       'keadaan_baik_akhir' => [
         'rules' => ['permit_empty', 'numeric'],
-        // 'errors'    => [
-        //   'max_length'  => 'Maksimal 20 karakter!',
-        // ]
+        'errors'    => [
+          'numeric'  => 'Masukkan Angka!',
+        ]
       ],
       'keadaan_rusak_akhir' => [
         'rules' => ['permit_empty', 'numeric'],
-        // 'errors'    => [
-        //   'max_length'  => 'Maksimal 20 karakter!',
-        // ]
+        'errors'    => [
+          'numeric'  => 'Masukkan Angka!',
+        ]
       ],
       'kecamatan'          => [
         'rules' => ['required', 'string', 'max_length[255]'],
