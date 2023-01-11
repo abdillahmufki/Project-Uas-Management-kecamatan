@@ -35,8 +35,9 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Dashboard::index');
+$routes->get('/dashboard', 'Dashboard::index');
 $routes->get('/login', 'Login::index');
+$routes->post('login/process', 'Login::process');
 
 
 // ROUTING APARAT
@@ -61,7 +62,45 @@ $routes->group('inventaris', function ($routes) {
   $routes->get('delete/(:segment)/delete', 'Inventaris::delete/$1');
   $routes->get('export', 'ExportExcel::export');
 });
+
+
+// ROUTING APARAT
+$routes->group('tanah',function ($routes){
+  $routes->get('','Tanah::index');
+  $routes->get('get-tanah','Tanah::ajaxDatatable');
+  $routes->get('create','Tanah::create'); //Form Create
+  $routes->add('store','Tanah::store'); //Action Create
+  $routes->get('edit/(:segment)','Tanah::edit/$1'); //Form Edit
+  $routes->get('delete/(:segment)/delete', 'Tanah::delete/$1');
+});
 // END ROUTING APARAT
+// Route Keuputsan Camat
+
+$routes->group('keputusan-camat', function ($routes) {
+    $routes->get('', 'keputusanCamat::index');
+    $routes->get('get-keputusan-camat', 'keputusanCamat::ajaxDatatable');
+    $routes->get('create', 'keputusanCamat::create'); //Form Create
+    $routes->add('store', 'keputusanCamat::store'); //Action Create
+    $routes->get('edit/(:segment)', 'keputusanCamat::edit/$1'); //Form Edit
+    $routes->get('delete/(:segment)/delete', 'keputusanCamat::delete/$1');
+});
+
+// Todo : akan dipakai jika sudah ditentukan
+// Route Keuputsan Camat
+
+$routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
+    $routes->group('users', function ($routes) {
+        $routes->get('', 'User::index');
+        $routes->get('getAll', 'User::ajaxDatatable');
+        $routes->get('create', 'User::create'); //Form Create
+        $routes->add('store', 'User::store'); //Action Create
+        $routes->get('edit/(:segment)', 'User::edit/$1'); //Form Edit
+        $routes->get('delete/(:segment)/delete', 'User::delete/$1');
+    });
+
+});
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

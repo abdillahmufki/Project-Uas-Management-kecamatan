@@ -138,14 +138,14 @@ class Aparat extends BaseController
           ]
         ],
         'keterangan'           => ['permit_empty','string'],
-        'kecamatanId'          => [
-          'rules' => ['required','numeric'],
+        'kecamatan'          => [
+          'rules' => ['required','string','max_length[60]'],
           'errors'    => [
             'required'  => 'Kecamatan wajib diisi!'
           ]
         ],
-        'kelurahanId'          => [
-          'rules' => ['required','numeric'],
+        'kelurahan'          => [
+          'rules' => ['required','string','max_length[60]'],
           'errors'    => [
             'required'  => 'Kecamatan wajib diisi!'
           ]
@@ -178,8 +178,8 @@ class Aparat extends BaseController
           "tanggal_pemberhentian" => ($this->request->getVar('tanggalPemberhentian') == "") ? NULL : $this->request->getVar('tanggalPemberhentian'),
           "nomor_pemberhentian"   => $this->request->getVar('nomorPemberhentian'),
           "keterangan"            => $this->request->getVar('keterangan'),
-          "kecamatan_id"          => $this->request->getVar('kecamatanId'),
-          "kelurahan_id"          => $this->request->getVar('kelurahanId'),
+          "kecamatan"          => $this->request->getVar('kecamatan'),
+          "kelurahan"          => $this->request->getVar('kelurahan'),
           "tahun"                 => $this->request->getVar('tahun')
         ];
         if($this->request->getPost('id')){ //Untuk Edit
