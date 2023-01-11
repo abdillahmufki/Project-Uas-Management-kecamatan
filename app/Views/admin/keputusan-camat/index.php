@@ -100,10 +100,10 @@
                     data: 'keterangan'
                 },
                 {
-                    data: 'kecamatan_id'
+                    data: 'kecamatan'
                 },
                 {
-                    data: 'kelurahan_id'
+                    data: 'kelurahan'
                 },
                 {
                     data: 'tahun'
