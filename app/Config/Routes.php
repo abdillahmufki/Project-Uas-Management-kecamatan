@@ -50,6 +50,17 @@ $routes->group('aparat',function ($routes){
 });
 // END ROUTING APARAT
 
+// ROUTING APARAT
+$routes->group('tanah',function ($routes){
+  $routes->get('','Tanah::index');
+  $routes->get('get-tanah','Tanah::ajaxDatatable');
+  $routes->get('create','Tanah::create'); //Form Create
+  $routes->add('store','Tanah::store'); //Action Create
+  $routes->get('edit/(:segment)','Tanah::edit/$1'); //Form Edit
+  $routes->get('delete/(:segment)/delete', 'Tanah::delete/$1');
+});
+// END ROUTING APARAT
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

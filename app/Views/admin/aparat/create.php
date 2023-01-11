@@ -166,17 +166,17 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <label for="kecamatanId" class="form-label">Kecamatan <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control <?= $validation->hasError('kecamatanId') ? 'is-invalid' : ''?>" id="kecamatanId" name="kecamatanId" value="<?= $aparat["kecamatan_id"] ?? old('kecamatanId')?>" required>
+                    <label for="kecamatan" class="form-label">Kecamatan <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control <?= $validation->hasError('kecamatan') ? 'is-invalid' : ''?>" id="kecamatan" name="kecamatan" value="<?= $aparat["kecamatan"] ?? old('kecamatan')?>" required>
                     <div class="invalid-feedback">
-                        <?=$validation->getError('kecamatanId')?>
+                        <?=$validation->getError('kecamatan')?>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <label for="kelurahanId" class="form-label">Kelurahan <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control <?= $validation->hasError('kelurahanId') ? 'is-invalid' : ''?>" id="kelurahanId" name="kelurahanId" value="<?= $aparat["kelurahan_id"] ?? old('kelurahanId')?>" required>
+                    <label for="kelurahan" class="form-label">Kelurahan <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control <?= $validation->hasError('kelurahan') ? 'is-invalid' : ''?>" id="kelurahan" name="kelurahan" value="<?= $aparat["kelurahan"] ?? old('kelurahan')?>" required>
                     <div class="invalid-feedback">
-                        <?=$validation->getError('kelurahanId')?>
+                        <?=$validation->getError('kelurahan')?>
                     </div>
                 </div>
                 <div class="col-md-4">
