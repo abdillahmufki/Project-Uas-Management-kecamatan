@@ -35,55 +35,60 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/dashboard', 'Dashboard::index');
+$routes->get('/', 'Login::index');
+
+//$routes->get('/dashboard', 'Dashboard::index');
 $routes->get('/login', 'Login::index');
 $routes->post('login/process', 'Login::process');
 
 
-// ROUTING APARAT
-$routes->group('aparat', function ($routes) {
-  $routes->get('', 'Aparat::index');
-  $routes->get('get-aparat', 'Aparat::ajaxDatatable');
-  $routes->get('create', 'Aparat::create'); //Form Create
-  $routes->add('store', 'Aparat::store'); //Action Create
-  $routes->get('edit/(:segment)', 'Aparat::edit/$1'); //Form Edit
-  $routes->get('delete/(:segment)/delete', 'Aparat::delete/$1');
+$routes->group('admin', ['filter' => 'role:admin,user'], function ($routes) {
+    $routes->get('dashboard', 'Dashboard::index');
+
+    // ROUTING APARAT
+    $routes->group('aparat', function ($routes) {
+        $routes->get('', 'Aparat::index');
+        $routes->get('get-aparat', 'Aparat::ajaxDatatable');
+        $routes->get('create', 'Aparat::create'); //Form Create
+        $routes->add('store', 'Aparat::store'); //Action Create
+        $routes->get('edit/(:segment)', 'Aparat::edit/$1'); //Form Edit
+        $routes->get('delete/(:segment)/delete', 'Aparat::delete/$1');
+    });
+    // END ROUTING APARAT
+
+    // ROUTING APARAT
+    $routes->group('tanah', function ($routes){
+        $routes->get('','Tanah::index');
+        $routes->get('get-tanah','Tanah::ajaxDatatable');
+        $routes->get('create','Tanah::create'); //Form Create
+        $routes->add('store','Tanah::store'); //Action Create
+        $routes->get('edit/(:segment)','Tanah::edit/$1'); //Form Edit
+        $routes->get('delete/(:segment)/delete', 'Tanah::delete/$1');
+    });
+    // END ROUTING APARAT
+    // Route Keuputsan Camat
+
+    $routes->group('keputusan-camat', function ($routes) {
+        $routes->get('', 'keputusanCamat::index');
+        $routes->get('get-keputusan-camat', 'keputusanCamat::ajaxDatatable');
+        $routes->get('create', 'keputusanCamat::create'); //Form Create
+        $routes->add('store', 'keputusanCamat::store'); //Action Create
+        $routes->get('edit/(:segment)', 'keputusanCamat::edit/$1'); //Form Edit
+        $routes->get('delete/(:segment)/delete', 'keputusanCamat::delete/$1');
+    });
+
+    // ROUTING INVENTARIS
+    $routes->group('inventaris', function ($routes) {
+        $routes->get('', 'Inventaris::index');
+        $routes->get('get-inventaris', 'Inventaris::ajaxDatatable');
+        $routes->get('create', 'Inventaris::create'); //Form Create
+        $routes->add('store', 'Inventaris::store'); //Action Create
+        $routes->get('edit/(:segment)', 'Inventaris::edit/$1'); //Form Edit
+        $routes->get('delete/(:segment)/delete', 'Inventaris::delete/$1');
+        $routes->get('export', 'ExportExcel::export');
+    });
 });
-// END ROUTING APARAT
 
-
-// ROUTING INVENTARIS
-$routes->group('inventaris', function ($routes) {
-  $routes->get('', 'Inventaris::index');
-  $routes->get('get-inventaris', 'Inventaris::ajaxDatatable');
-  $routes->get('create', 'Inventaris::create'); //Form Create
-  $routes->add('store', 'Inventaris::store'); //Action Create
-  $routes->get('edit/(:segment)', 'Inventaris::edit/$1'); //Form Edit
-  $routes->get('delete/(:segment)/delete', 'Inventaris::delete/$1');
-  $routes->get('export', 'ExportExcel::export');
-});
-
-
-// ROUTING APARAT
-$routes->group('tanah',function ($routes){
-  $routes->get('','Tanah::index');
-  $routes->get('get-tanah','Tanah::ajaxDatatable');
-  $routes->get('create','Tanah::create'); //Form Create
-  $routes->add('store','Tanah::store'); //Action Create
-  $routes->get('edit/(:segment)','Tanah::edit/$1'); //Form Edit
-  $routes->get('delete/(:segment)/delete', 'Tanah::delete/$1');
-});
-// END ROUTING APARAT
-// Route Keuputsan Camat
-
-$routes->group('keputusan-camat', function ($routes) {
-    $routes->get('', 'keputusanCamat::index');
-    $routes->get('get-keputusan-camat', 'keputusanCamat::ajaxDatatable');
-    $routes->get('create', 'keputusanCamat::create'); //Form Create
-    $routes->add('store', 'keputusanCamat::store'); //Action Create
-    $routes->get('edit/(:segment)', 'keputusanCamat::edit/$1'); //Form Edit
-    $routes->get('delete/(:segment)/delete', 'keputusanCamat::delete/$1');
-});
 
 // Todo : akan dipakai jika sudah ditentukan
 // Route Keuputsan Camat

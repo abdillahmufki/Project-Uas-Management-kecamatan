@@ -22,7 +22,7 @@
                 </div>
               <?php endif;?>
               <div style="margin-bottom:var(--bs-card-title-spacer-y)">
-                <a class="btn btn-primary btn" href="<?=base_url('aparat/create')?>">
+                <a class="btn btn-primary btn" href="<?=base_url('admin/aparat/create')?>">
                   Tambah <i class="bi bi-plus"></i>
                 </a>
               </div>
@@ -85,7 +85,7 @@
         "processing": true, //Feature control the processing indicator.
         "serverSide": true, //Feature control DataTables' server-side processing mode.
         "responsive": true,
-        "ajax": "<?= base_url('aparat/get-aparat')?>",
+        "ajax": "<?= base_url('admin/aparat/get-aparat')?>",
         "columns": [
           {data:'nama_lengkap'},
           {data:'NIAP'},

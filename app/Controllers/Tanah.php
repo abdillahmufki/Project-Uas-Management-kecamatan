@@ -20,7 +20,7 @@ class Tanah extends BaseController
             $builder = $db->table('tanah');
             return DataTable::of($builder)
             ->add('action', function($row){
-              return '<a class="btn btn-warning btn-sm text-white" href="'.base_url('tanah/edit/'.$row->id).'">Edit&nbsp;<i class="bi bi-pencil-fill"></i></a> <a class="btn btn-danger btn-sm" data-href="'.base_url('tanah/delete/'.$row->id.'/delete').'" onclick="confirmToDelete(this)"><i class="bi bi-trash-fill"></i>&nbsp; Hapus</a>';
+              return '<a class="btn btn-warning btn-sm text-white" href="'.base_url('admin/tanah/edit/'.$row->id).'">Edit&nbsp;<i class="bi bi-pencil-fill"></i></a> <a class="btn btn-danger btn-sm" data-href="'.base_url('admin/tanah/delete/'.$row->id.'/delete').'" onclick="confirmToDelete(this)"><i class="bi bi-trash-fill"></i>&nbsp; Hapus</a>';
           }, 'last')
           ->toJson(true);
         }
@@ -123,7 +123,7 @@ class Tanah extends BaseController
           $tanah->insert($data);
           session()->setFlashdata('message','Data berhasil ditambahkan');
         }
-        return redirect()->to('tanah');
+        return redirect()->to('admin/tanah');
       }
     }
 
@@ -144,6 +144,6 @@ class Tanah extends BaseController
       $tanah = new TanahModel();
       $tanah->delete($id);
       session()->setFlashdata('message','Data berhasil dihapus!');
-      return redirect('tanah');
+      return redirect('admin/tanah');
     }
 }

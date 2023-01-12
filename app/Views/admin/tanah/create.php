@@ -11,7 +11,7 @@
         <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?=base_url('/')?>">Home</a></li>
-            <li class="breadcrumb-item"><a href="<?=base_url('tanah')?>">Data Tanah</a></li>
+            <li class="breadcrumb-item"><a href="<?=base_url('admin/tanah')?>">Data Tanah</a></li>
             <li class="breadcrumb-item active">Form <?= ($tanah) ? 'Edit' : 'Tambah' ?> Tanah</li>
         </ol>
     </nav>
@@ -20,7 +20,7 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">Form <?= ($tanah) ? 'Edit' : 'Tambah' ?> Tanah</h5>
-            <form class="row g-3 " novalidate="" method="post" action="<?= base_url('tanah/store')?>">
+            <form class="row g-3 " novalidate="" method="post" action="<?= base_url('admin/tanah/store')?>">
               <?php if($tanah) : ?>
                 <input type="hidden" name="id" value="<?=$tanah['id']?>">
               <?php endif; ?>
