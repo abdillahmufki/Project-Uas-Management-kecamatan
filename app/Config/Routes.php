@@ -17,10 +17,11 @@ if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
+$routes->setDefaultController('Dashboard');
 $routes->setDefaultMethod('index');
-$routes->setTranslateURIDashes(false);
-$routes->set404Override();
+$routes->setTranslateURIDashes(true);
+
+$routes->get('/', 'Dashboard::index');
 // The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
@@ -56,18 +57,31 @@ $routes->group('admin', ['filter' => 'role:admin,user'], function ($routes) {
     });
     // END ROUTING APARAT
 
+    // ROUTING INVENTARIS
+    $routes->group('inventaris', function ($routes) {
+    $routes->get('', 'Inventaris::index');
+    $routes->get('get-inventaris', 'Inventaris::ajaxDatatable');
+    $routes->get('create', 'Inventaris::create'); //Form Create
+    $routes->add('store', 'Inventaris::store'); //Action Create
+    $routes->get('edit/(:segment)', 'Inventaris::edit/$1'); //Form Edit
+    $routes->post('handleEdit', 'Inventaris::handleEdit');
+    $routes->get('delete/(:segment)/delete', 'Inventaris::delete/$1');
+    $routes->get('export', 'ExportExcel::export');
+    });
+
+
     // ROUTING APARAT
-    $routes->group('tanah', function ($routes){
-        $routes->get('','Tanah::index');
-        $routes->get('get-tanah','Tanah::ajaxDatatable');
-        $routes->get('create','Tanah::create'); //Form Create
-        $routes->add('store','Tanah::store'); //Action Create
-        $routes->get('edit/(:segment)','Tanah::edit/$1'); //Form Edit
-        $routes->get('delete/(:segment)/delete', 'Tanah::delete/$1');
+    $routes->group('tanah', function ($routes) {
+    $routes->get('', 'Tanah::index');
+    $routes->get('get-tanah', 'Tanah::ajaxDatatable');
+    $routes->get('create', 'Tanah::create'); //Form Create
+    $routes->add('store', 'Tanah::store'); //Action Create
+    $routes->get('edit/(:segment)', 'Tanah::edit/$1'); //Form Edit
+    $routes->get('delete/(:segment)/delete', 'Tanah::delete/$1');
     });
     // END ROUTING APARAT
-    // Route Keuputsan Camat
 
+    // Route Keuputsan Camat
     $routes->group('keputusan-camat', function ($routes) {
         $routes->get('', 'keputusanCamat::index');
         $routes->get('get-keputusan-camat', 'keputusanCamat::ajaxDatatable');
@@ -76,34 +90,21 @@ $routes->group('admin', ['filter' => 'role:admin,user'], function ($routes) {
         $routes->get('edit/(:segment)', 'keputusanCamat::edit/$1'); //Form Edit
         $routes->get('delete/(:segment)/delete', 'keputusanCamat::delete/$1');
     });
-
-    // ROUTING INVENTARIS
-    $routes->group('inventaris', function ($routes) {
-        $routes->get('', 'Inventaris::index');
-        $routes->get('get-inventaris', 'Inventaris::ajaxDatatable');
-        $routes->get('create', 'Inventaris::create'); //Form Create
-        $routes->add('store', 'Inventaris::store'); //Action Create
-        $routes->get('edit/(:segment)', 'Inventaris::edit/$1'); //Form Edit
-        $routes->get('delete/(:segment)/delete', 'Inventaris::delete/$1');
-        $routes->get('export', 'ExportExcel::export');
-    });
 });
-
 
 // Todo : akan dipakai jika sudah ditentukan
 // Route Keuputsan Camat
 
-$routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
-    $routes->group('users', function ($routes) {
-        $routes->get('', 'User::index');
-        $routes->get('getAll', 'User::ajaxDatatable');
-        $routes->get('create', 'User::create'); //Form Create
-        $routes->add('store', 'User::store'); //Action Create
-        $routes->get('edit/(:segment)', 'User::edit/$1'); //Form Edit
-        $routes->get('delete/(:segment)/delete', 'User::delete/$1');
+    $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
+        $routes->group('users', function ($routes) {
+            $routes->get('', 'User::index');
+            $routes->get('getAll', 'User::ajaxDatatable');
+            $routes->get('create', 'User::create'); //Form Create
+            $routes->add('store', 'User::store'); //Action Create
+            $routes->get('edit/(:segment)', 'User::edit/$1'); //Form Edit
+            $routes->get('delete/(:segment)/delete', 'User::delete/$1');
+        });
     });
-
-});
 
 
 /*
