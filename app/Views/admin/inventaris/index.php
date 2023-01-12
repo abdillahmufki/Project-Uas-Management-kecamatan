@@ -22,9 +22,18 @@
           </div>
         <?php endif; ?>
         <div style="margin-bottom:var(--bs-card-title-spacer-y)">
-          <a class="btn btn-primary btn" href="<?= base_url('admin/inventaris/create') ?>">
-            Tambah <i class="bi bi-plus"></i>
-          </a>
+        <div class="d-flex flex-row">
+          <div>
+              <a class="btn btn-primary btn" href="<?= base_url('admin/inventaris/create') ?>">
+                Tambah <i class="bi bi-plus"></i>
+              </a>
+          </div>
+          <div style="margin-left: 10px;">
+          <form action="<?= base_url('admin/inventaris/export') ?>" method="GET">
+                <button type="submit" class="btn btn-success">Download Data Inventaris</button>
+              </form>
+          </div>
+        </div>
         </div>
         <div class="table-responsive">
           <table class="table table-striped table-hover dt-responsive display nowrap" id="table-inventaris">
@@ -72,9 +81,7 @@
     </div>
   </div>
 </div>
-<form action="<?= base_url('admin/inventaris/export') ?>" method="GET">
-  <button type="submit">Download Data Inventaris</button>
-</form>
+
 <script type="text/javascript">
   function confirmToDelete(el) {
     $("#delete-button").attr("href", el.dataset.href);

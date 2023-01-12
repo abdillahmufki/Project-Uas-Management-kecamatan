@@ -20,22 +20,21 @@ class Login extends BaseController
         $dataUser = $users->where([
             'username' => $username,
         ])->first();
-
         if ($dataUser) {
-            var_dump($dataUser->password_hash);
+            var_dump(password_verify($password, $dataUser->password_hash));
             if (password_verify($password, $dataUser->password_hash)) {
                 session()->set([
                     'username' => $dataUser->username,
-                    'name' => $dataUser->name,
+                    //'name' => $dataUser->name,
                 ]);
-                //return redirect()->to(base_url('/'));
+                return redirect()->to(base_url('admin/dashboard'));
             } else {
-                //session()->setFlashdata('error', 'Username & Password Salah');
-                //return redirect()->back();
+                session()->setFlashdata('error', 'Username & Password Salah');
+                return redirect()->back();
             }
         } else {
-            //session()->setFlashdata('error', 'Username & Password Salah');
-            //return redirect()->back();
+            session()->setFlashdata('error', 'Username & Password Salah');
+            return redirect()->back();
         }
     }
 }

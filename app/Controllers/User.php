@@ -110,22 +110,20 @@ class User extends BaseController
                     'password_hash' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT),
                 ];
                 if ($id) { //Untuk Edit
-                    return $users->update($id, $data);
                     $users->update($id, $data);
                     session()->setFlashdata('message', 'Data berhasil diedit');
                 } else { //Untuk Tambah
-                    return $users
+                    $users
                     ->withGroup($this->request->getVar('role'))
                     ->insert($data);
 
                     $activator = service('activator');
                     $sent      = $activator->send($users);
 
-
                     session()->setFlashdata('message', 'Data berhasil ditambahkan');
                 }
 
-                return redirect()->to('admin/users');
+                //return redirect()->to('admin/users');
             //}
 
     }

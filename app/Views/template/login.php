@@ -57,7 +57,7 @@
               <div class="card mb-3">
 
                 <div class="card-body">
-
+                <?= session('redirect_url') ?> session('redirect_url')
                 <?= view('Myth\Auth\Views\_message_block') ?>
 
                   <div class="pt-4 pb-2">
