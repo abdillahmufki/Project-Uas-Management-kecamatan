@@ -22,7 +22,6 @@ class Kint extends BaseConfig
     | Global Settings
     |--------------------------------------------------------------------------
     */
-
     public $plugins;
     public $maxDepth          = 6;
     public $displayCalledFrom = true;

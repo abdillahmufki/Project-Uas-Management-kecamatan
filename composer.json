@@ -9,7 +9,9 @@
         "codeigniter4/framework": "^4.0",
         "hermawan/codeigniter4-datatables": "^0.6.1",
         "phpoffice/phpspreadsheet": "^1.26",
-        "myth/auth": "^1.2"
+        "myth/auth": "^1.2",
+        "kint-php/kint": "3.3 as 2.2",
+        "laminas/laminas-escaper": "^2.12"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9",
