@@ -8,24 +8,23 @@
       </a>
     </li>
 
-      <li class="nav-heading">Pages</li>
-      <li class="nav-item">
-        <a class="nav-link <?= (current_url(true)->getSegment(2) == "aparat") ? '' : 'collapsed' ?> " href="<?=base_url('aparat')?>">
-          <i class="bi bi-person"></i>
-          <span>Aparat</span>
-        </a>
-      </li>
+    <li class="nav-heading">Pages</li>
+    <li class="nav-item">
+      <a class="nav-link <?= (current_url(true)->getSegment(2) == "aparat") ? '' : 'collapsed' ?> " href="<?= base_url('aparat') ?>">
+        <i class="bi bi-person"></i>
+        <span>Aparat</span>
+      </a>
+    </li>
 
+    <li class="nav-item">
+      <a class="nav-link <?= (current_url(true)->getSegment(2) == "inventaris") ? '' : 'collapsed' ?> " href="<?= base_url('inventaris') ?>">
+        <i class="bi bi-archive"></i>
+        <span>Inventarisasi</span>
+      </a>
+    </li>
+    <a class="nav-link collapsed" href="users-profile.html">
       <li class="nav-item">
-        <a class="nav-link <?= (current_url(true)->getSegment(2) == "inventaris") ? '' : 'collapsed' ?> " href="<?=base_url('inventaris')?>">
-          <i class="bi bi-archive"></i>
-          <span>Inventarisasi</span>
-        </a>
-      </li>
-      <!-- <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
-      <li class="nav-item">
-        <a class="nav-link <?= (current_url(true)->getSegment(2) == "tanah") ? '' : 'collapsed' ?> " href="<?=base_url('tanah')?>">
+        <a class="nav-link <?= (current_url(true)->getSegment(2) == "tanah") ? '' : 'collapsed' ?> " href="<?= base_url('tanah') ?>">
           <i class="bi bi-person"></i>
           <span>Data Tanah</span>
         </a>
