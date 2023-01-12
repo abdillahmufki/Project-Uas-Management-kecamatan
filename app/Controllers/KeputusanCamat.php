@@ -85,14 +85,14 @@ class KeputusanCamat extends BaseController
             ],
             'keterangan'           => ['permit_empty', 'string'],
             'uraianSingkat'           => ['permit_empty', 'string'],
-            'kecamatanId'          => [
-                'rules' => ['required', 'numeric'],
+            'kecamatan'          => [
+                'rules' => ['required', 'string', 'max_length[60]'],
                 'errors'    => [
                     'required'  => 'Kecamatan wajib diisi!'
                 ]
             ],
-            'kelurahanId'          => [
-                'rules' => ['required', 'numeric'],
+            'kelurahan'          => [
+                'rules' => ['required', 'string', 'max_length[60]'],
                 'errors'    => [
                     'required'  => 'Kecamatan wajib diisi!'
                 ]
@@ -117,8 +117,8 @@ class KeputusanCamat extends BaseController
                 "nomor_laporan"         => $this->request->getVar('nomorLaporan'),
                 "keterangan"          => $this->request->getVar('keterangan'),
                 "uraian_singkat"         => $this->request->getVar('uraianSingkat'),
-                "kecamatan_id"          => $this->request->getVar('kecamatanId'),
-                "kelurahan_id"          => $this->request->getVar('kelurahanId'),
+                "kecamatan"          => $this->request->getVar('kecamatan'),
+                "kelurahan"          => $this->request->getVar('kelurahan'),
                 "tahun"                 => $this->request->getVar('tahun')
             ];
             if ($this->request->getPost('id')) { //Untuk Edit
