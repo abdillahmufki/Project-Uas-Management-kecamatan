@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
-
+//Model
 class KeputusanCamatModel extends Model
 {
     protected $table      = 'KeputusanCamat';
