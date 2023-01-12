@@ -102,8 +102,8 @@
           {data:'tanggal_pemberhentian'},
           {data:'nomor_pemberhentian'},
           {data:'keterangan'},
-          {data:'kecamatan_id'},
-          {data:'kelurahan_id'},
+          {data:'kecamatan'},
+          {data:'kelurahan'},
           {data:'tahun'},
           {data:'action',orderable: false}
         ]
