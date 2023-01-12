@@ -8,39 +8,9 @@ use App\Models\InventarisModel;
 
 class Inventaris extends BaseController
 {
-  public function index()
+  public function getRules()
   {
-    echo view('admin/inventaris/index');
-  }
-
-  public function ajaxDatatable()
-  {
-    if ($this->request->isAJAX()) {
-      $db = \Config\Database::connect();
-      $builder = $db->table('inventariss');
-      return DataTable::of($builder)
-        ->add('action', function ($row) {
-          return '<a class="btn btn-warning btn-sm text-white" href="' . base_url('inventaris/edit/' . $row->id) . '">Edit&nbsp;<i class="bi bi-pencil-fill"></i></a> <a class="btn btn-danger btn-sm" data-href="' . base_url('inventaris/delete/' . $row->id . '/delete') . '" onclick="confirmToDelete(this)"><i class="bi bi-trash-fill"></i>&nbsp; Hapus</a>';
-        }, 'last')
-        ->toJson(true);
-    }
-  }
-
-
-  public function create()
-  {
-    $data = [
-      'validation' => \Config\Services::validation(),
-      'inventaris'     => null
-    ];
-    return view('admin/inventaris/create', $data);
-  }
-
-  public function store()
-  {
-    // lakukan validasi
-    $id = $this->request->getPost('id');
-    $rules = [
+    return [
       'id'  => [
         'rules'     => ['permit_empty', 'numeric']
       ],
@@ -136,9 +106,43 @@ class Inventaris extends BaseController
         ]
       ]
     ];
+  }
+
+  public function index()
+  {
+    echo view('admin/inventaris/index');
+  }
+
+  public function ajaxDatatable()
+  {
+    if ($this->request->isAJAX()) {
+      $db = \Config\Database::connect();
+      $builder = $db->table('inventariss');
+      return DataTable::of($builder)
+        ->add('action', function ($row) {
+          return '<a class="btn btn-warning btn-sm text-white" href="' . base_url('inventaris/edit/' . $row->id) . '">Edit&nbsp;<i class="bi bi-pencil-fill"></i></a> <a class="btn btn-danger btn-sm" data-href="' . base_url('inventaris/delete/' . $row->id . '/delete') . '" onclick="confirmToDelete(this)"><i class="bi bi-trash-fill"></i>&nbsp; Hapus</a>';
+        }, 'last')
+        ->toJson(true);
+    }
+  }
+
+
+  public function create()
+  {
+    $data = [
+      'validation' => \Config\Services::validation(),
+      'inventaris'     => null
+    ];
+    return view('admin/inventaris/create', $data);
+  }
+
+  public function store()
+  {
+    // lakukan validasi
+    $id = $this->request->getPost('id');
+    $rules = $this->getRules();
     if (!$this->validate($rules)) {
-      $validation =  \Config\Services::validation();
-      return redirect()->back()->withInput();
+      return $this->create();
     } else {
       $inventaris = new InventarisModel();
       $data = [
@@ -179,7 +183,44 @@ class Inventaris extends BaseController
       'validation' => \Config\Services::validation(),
       'inventaris'     => $inventaris
     ];
-    return view('admin/inventaris/create', $data);
+    return view('admin/inventaris/edit', $data);
+  }
+
+  public function handleEdit()
+  {
+    $id = $this->request->getPost('id');
+    $rules = $this->getRules();
+    if (!$this->validate($rules)) {
+      return $this->edit($id);
+    } else {
+      $inventaris = new InventarisModel();
+      $data = [
+        "jenis_barang_bangunan"          => $this->request->getVar('jenis_barang_bangunan'),
+        "jml_brg_dibelisendiri"          => $this->request->getVar('jml_brg_dibelisendiri'),
+        "jml_brg_bantuanpemerintah"                   => $this->request->getVar('jml_brg_bantuanpemerintah'),
+        "jml_brg_sumbangan"         => $this->request->getVar('jml_brg_sumbangan'),
+        "keadaan_baik_awal"          => $this->request->getVar('keadaan_baik_awal'),
+        "keadaan_rusak_awal"         => $this->request->getVar('keadaan_rusak_awal'),
+        "hapus_rusak"                => $this->request->getVar('hapus_rusak'),
+        "hapus_dijual"      => $this->request->getVar('hapus_dijual'),
+        "hapus_disumbangkan"               => $this->request->getVar('hapus_disumbangkan'),
+        "tanggal_penghapusan"  => ($this->request->getVar('tanggal_penghapusan') == "") ? NULL : $this->request->getVar('tanggal_penghapusan'),
+        "keadaan_baik_akhir"    => $this->request->getVar('keadaan_baik_akhir'),
+        "keadaan_rusak_akhir"          => $this->request->getVar('keadaan_rusak_akhir'),
+        "keterangan"            => $this->request->getVar('keterangan'),
+        "kecamatan"          => $this->request->getVar('kecamatan'),
+        "kelurahan"          => $this->request->getVar('kelurahan'),
+        "tahun"                 => $this->request->getVar('tahun')
+      ];
+      if ($this->request->getPost('id')) { //Untuk Edit
+        $inventaris->update($this->request->getPost('id'), $data);
+        session()->setFlashdata('message', 'Data berhasil diedit');
+      } else { //Untuk Tambah
+        $inventaris->insert($data);
+        session()->setFlashdata('message', 'Data berhasil ditambahkan');
+      }
+      return redirect()->to('inventaris');
+    }
   }
 
   public function delete($id)

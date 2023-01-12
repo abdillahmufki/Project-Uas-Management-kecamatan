@@ -18,26 +18,24 @@
         </a>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link <?= (current_url(true)->getSegment(2) == "inventaris") ? '' : 'collapsed' ?> " href="<?=base_url('inventaris')?>">
-          <i class="bi bi-archive"></i>
-          <span>Inventarisasi</span>
-        </a>
-      </li>
-      <!-- <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
-      <li class="nav-item">
-        <a class="nav-link <?= ($segment === "tanah") ? '' : 'collapsed' ?> " href="<?=base_url('admin/tanah')?>">
-          <i class="bi bi-person"></i>
-          <span>Data Tanah</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link <?= ($segment === "keputusan-camat") ? '' : 'collapsed' ?> " href="<?= base_url('admin/keputusan-camat') ?>">
-          <i class="bi bi-journals"></i>
-          <span>Keputusan Camat</span>
-        </a>
-      </li>
+    <li class="nav-item">
+      <a class="nav-link <?= (current_url(true)->getSegment(2) == "inventaris") ? '' : 'collapsed' ?> " href="<?= base_url('admin/inventaris') ?>">
+        <i class="bi bi-archive"></i>
+        <span>Inventarisasi</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link <?= ($segment === "tanah") ? '' : 'collapsed' ?> " href="<?=base_url('admin/tanah')?>">
+        <i class="bi bi-person"></i>
+        <span>Data Tanah</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link <?= ($segment === "keputusan-camat") ? '' : 'collapsed' ?> " href="<?= base_url('admin/keputusan-camat') ?>">
+        <i class="bi bi-journals"></i>
+        <span>Keputusan Camat</span>
+      </a>
+    </li>
 
     <?php if (in_groups('admin')) : ?>
     <li class="nav-item">

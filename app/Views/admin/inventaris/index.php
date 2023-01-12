@@ -46,7 +46,7 @@
                 <th>Kecamatan</th>
                 <th>Kelurahan</th>
                 <th>Tahun</th>
-                <th>Aksi</th>
+                <th>Aksii</th>
               </tr>
             </thead>
             <tbody>
