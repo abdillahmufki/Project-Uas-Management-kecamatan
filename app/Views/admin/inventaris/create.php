@@ -11,7 +11,7 @@
 <nav>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="<?= base_url('/') ?>">Home</a></li>
-        <li class="breadcrumb-item"><a href="<?= base_url('inventaris') ?>">Inventarisasi</a></li>
+        <li class="breadcrumb-item"><a href="<?= base_url('admin/inventaris') ?>">Inventarisasi</a></li>
         <li class="breadcrumb-item active">Form <?= ($inventaris) ? 'Edit' : 'Tambah' ?> Inventarisasi</li>
     </ol>
 </nav>
@@ -21,7 +21,7 @@
     <div class="card-body">
 
         <h5 class="card-title">Form <?= ($inventaris) ? 'Edit' : 'Tambah' ?> Inventarisasi</h5>
-        <form class="row g-3 " novalidate="" method="POST" action="<?= base_url('inventaris/store') ?>">
+        <form class="row g-3 " novalidate="" method="POST" action="<?= base_url('admin/inventaris/store') ?>">
             <?php if ($inventaris) : ?>
                 <input type="hidden" name="id" value="<?= $inventaris['id'] ?>">
             <?php endif; ?>

@@ -120,7 +120,7 @@ class Inventaris extends BaseController
       $builder = $db->table('inventariss');
       return DataTable::of($builder)
         ->add('action', function ($row) {
-          return '<a class="btn btn-warning btn-sm text-white" href="' . base_url('inventaris/edit/' . $row->id) . '">Edit&nbsp;<i class="bi bi-pencil-fill"></i></a> <a class="btn btn-danger btn-sm" data-href="' . base_url('inventaris/delete/' . $row->id . '/delete') . '" onclick="confirmToDelete(this)"><i class="bi bi-trash-fill"></i>&nbsp; Hapus</a>';
+          return '<a class="btn btn-warning btn-sm text-white" href="' . base_url('admin/inventaris/edit/' . $row->id) . '">Edit&nbsp;<i class="bi bi-pencil-fill"></i></a> <a class="btn btn-danger btn-sm" data-href="' . base_url('admin/inventaris/delete/' . $row->id . '/delete') . '" onclick="confirmToDelete(this)"><i class="bi bi-trash-fill"></i>&nbsp; Hapus</a>';
         }, 'last')
         ->toJson(true);
     }
@@ -170,7 +170,7 @@ class Inventaris extends BaseController
         $inventaris->insert($data);
         session()->setFlashdata('message', 'Data berhasil ditambahkan');
       }
-      return redirect()->to('inventaris');
+      return redirect()->to('admin/inventaris');
     }
   }
 
@@ -219,7 +219,7 @@ class Inventaris extends BaseController
         $inventaris->insert($data);
         session()->setFlashdata('message', 'Data berhasil ditambahkan');
       }
-      return redirect()->to('inventaris');
+      return redirect()->to('admin/inventaris');
     }
   }
 
@@ -228,6 +228,6 @@ class Inventaris extends BaseController
     $inventaris = new InventarisModel();
     $inventaris->delete($id);
     session()->setFlashdata('message', 'Data berhasil dihapus!');
-    return redirect('inventaris');
+    return redirect('admin/inventaris');
   }
 }

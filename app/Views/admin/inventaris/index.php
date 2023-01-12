@@ -22,7 +22,7 @@
           </div>
         <?php endif; ?>
         <div style="margin-bottom:var(--bs-card-title-spacer-y)">
-          <a class="btn btn-primary btn" href="<?= base_url('inventaris/create') ?>">
+          <a class="btn btn-primary btn" href="<?= base_url('admin/inventaris/create') ?>">
             Tambah <i class="bi bi-plus"></i>
           </a>
         </div>
@@ -72,7 +72,7 @@
     </div>
   </div>
 </div>
-<form action="<?= base_url('inventaris/export') ?>" method="GET">
+<form action="<?= base_url('admin/inventaris/export') ?>" method="GET">
   <button type="submit">Download Data Inventaris</button>
 </form>
 <script type="text/javascript">
@@ -86,7 +86,7 @@
       "processing": true, //Feature control the processing indicator.
       "serverSide": true, //Feature control DataTables' server-side processing mode.
       "responsive": true,
-      "ajax": "<?= base_url('inventaris/get-inventaris') ?>",
+      "ajax": "<?= base_url('admin/inventaris/get-inventaris') ?>",
       "columns": [{
           data: 'jenis_barang_bangunan'
         },
