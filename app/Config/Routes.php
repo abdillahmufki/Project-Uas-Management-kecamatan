@@ -8,7 +8,7 @@ $routes = Services::routes();
 // Load the system's routing file first, so that the app and ENVIRONMENT
 // can override as needed.
 if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
-    require SYSTEMPATH . 'Config/Routes.php';
+  require SYSTEMPATH . 'Config/Routes.php';
 }
 
 /*
@@ -76,6 +76,17 @@ $routes->group('admin', ['filter' => 'role:admin,user'], function ($routes) {
         $routes->get('edit/(:segment)', 'keputusanCamat::edit/$1'); //Form Edit
         $routes->get('delete/(:segment)/delete', 'keputusanCamat::delete/$1');
     });
+
+    // ROUTING INVENTARIS
+    $routes->group('inventaris', function ($routes) {
+        $routes->get('', 'Inventaris::index');
+        $routes->get('get-inventaris', 'Inventaris::ajaxDatatable');
+        $routes->get('create', 'Inventaris::create'); //Form Create
+        $routes->add('store', 'Inventaris::store'); //Action Create
+        $routes->get('edit/(:segment)', 'Inventaris::edit/$1'); //Form Edit
+        $routes->get('delete/(:segment)/delete', 'Inventaris::delete/$1');
+        $routes->get('export', 'ExportExcel::export');
+    });
 });
 
 
@@ -109,5 +120,5 @@ $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
  * needing to reload it.
  */
 if (is_file(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
-    require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
+  require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }
