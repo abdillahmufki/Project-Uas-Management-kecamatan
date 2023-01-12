@@ -60,6 +60,7 @@ $routes->group('inventaris', function ($routes) {
   $routes->get('create', 'Inventaris::create'); //Form Create
   $routes->add('store', 'Inventaris::store'); //Action Create
   $routes->get('edit/(:segment)', 'Inventaris::edit/$1'); //Form Edit
+  $routes->post('handleEdit', 'Inventaris::handleEdit');
   $routes->get('delete/(:segment)/delete', 'Inventaris::delete/$1');
   $routes->get('export', 'ExportExcel::export');
 });

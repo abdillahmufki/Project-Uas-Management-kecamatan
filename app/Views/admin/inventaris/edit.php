@@ -21,7 +21,7 @@
     <div class="card-body">
 
         <h5 class="card-title">Form <?= ($inventaris) ? 'Edit' : 'Tambah' ?> Inventarisasi</h5>
-        <form class="row g-3 " novalidate="" method="POST" action="<?= base_url('inventaris/store') ?>">
+        <form class="row g-3 " novalidate="" method="POST" action="<?= base_url('inventaris/handleEdit') ?>">
             <?php if ($inventaris) : ?>
                 <input type="hidden" name="id" value="<?= $inventaris['id'] ?>">
             <?php endif; ?>
@@ -195,6 +195,5 @@
 
 
     </form>
-</div>
 </div>
 <?= $this->endSection() ?>
