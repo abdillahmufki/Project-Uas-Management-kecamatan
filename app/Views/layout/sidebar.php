@@ -37,16 +37,6 @@
         </a>
       </li>
 
-    <?php if (in_groups('admin')) : ?>
-    <li class="nav-item">
-      <a class="nav-link <?= (current_url(true)->getSegment(3) == "users") ? '' : 'collapsed' ?> " href="<?= base_url('admin/users') ?>">
-        <i class="bi bi-person"></i>
-        <span>User Management</span>
-      </a>
-    </li>
-
-    <?php endif; ?>
-
   </ul>
 
 </aside>
