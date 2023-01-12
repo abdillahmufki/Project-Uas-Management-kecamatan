@@ -11,7 +11,7 @@
 <nav>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="<?= base_url('/') ?>">Home</a></li>
-        <li class="breadcrumb-item"><a href="<?= base_url('keputusan-camat') ?>">Keputusan Camat</a></li>
+        <li class="breadcrumb-item"><a href="<?= base_url('admin/keputusan-camat') ?>">Keputusan Camat</a></li>
         <li class="breadcrumb-item active">Form <?= ($keputusanCamat) ? 'Edit' : 'Tambah' ?> Keputusan Camat</li>
     </ol>
 </nav>
@@ -20,7 +20,7 @@
 <div class="card">
     <div class="card-body">
         <h5 class="card-title">Form <?= ($keputusanCamat) ? 'Edit' : 'Tambah' ?> Keputusan Camat</h5>
-        <form class="row g-3 " novalidate="" method="post" action="<?= base_url('keputusan-camat/store') ?>">
+        <form class="row g-3 " novalidate="" method="post" action="<?= base_url('admin/keputusan-camat/store') ?>">
             <?php if ($keputusanCamat) : ?>
                 <input type="hidden" name="id" value="<?= $keputusanCamat['id'] ?>">
             <?php endif; ?>

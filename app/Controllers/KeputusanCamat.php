@@ -22,7 +22,7 @@ class KeputusanCamat extends BaseController
             $builder = $db->table('KeputusanCamat');
             return DataTable::of($builder)
                 ->add('action', function ($row) {
-                    return '<a class="btn btn-warning btn-sm text-white" href="' . base_url('keputusan-camat/edit/' . $row->id) . '">Edit&nbsp;<i class="bi bi-pencil-fill"></i></a> <a class="btn btn-danger btn-sm" data-href="' . base_url('keputusan-camat/delete/' . $row->id . '/delete') . '" onclick="confirmToDelete(this)"><i class="bi bi-trash-fill"></i>&nbsp; Hapus</a>';
+                    return '<a class="btn btn-warning btn-sm text-white" href="' . base_url('admin/keputusan-camat/edit/' . $row->id) . '">Edit&nbsp;<i class="bi bi-pencil-fill"></i></a> <a class="btn btn-danger btn-sm" data-href="' . base_url('admin/keputusan-camat/delete/' . $row->id . '/delete') . '" onclick="confirmToDelete(this)"><i class="bi bi-trash-fill"></i>&nbsp; Hapus</a>';
                 }, 'last')
                 ->toJson(true);
         }
@@ -128,7 +128,7 @@ class KeputusanCamat extends BaseController
                 $keputusanCamat->insert($data);
                 session()->setFlashdata('message', 'Data berhasil ditambahkan');
             }
-            return redirect()->to('keputusan-camat');
+            return redirect()->to('admin/keputusan-camat');
         }
     }
 
@@ -151,6 +151,6 @@ class KeputusanCamat extends BaseController
     {
         $keputusanCamats = new KeputusanCamatModel();
         $keputusanCamats->delete($id);
-        return redirect('keputusan-camat');
+        return redirect('admin/keputusan-camat');
     }
 }

@@ -11,7 +11,7 @@
         <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?=base_url('/')?>">Home</a></li>
-            <li class="breadcrumb-item"><a href="<?=base_url('aparat')?>">Aparat</a></li>
+            <li class="breadcrumb-item"><a href="<?=base_url('admin/aparat')?>">Aparat</a></li>
             <li class="breadcrumb-item active">Form <?= ($aparat) ? 'Edit' : 'Tambah' ?> Aparat</li>
         </ol>
     </nav>
@@ -20,7 +20,7 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">Form <?= ($aparat) ? 'Edit' : 'Tambah' ?> Aparat</h5>
-            <form class="row g-3 " novalidate="" method="post" action="<?= base_url('aparat/store')?>">
+            <form class="row g-3 " novalidate="" method="post" action="<?= base_url('admin/aparat/store')?>">
               <?php if($aparat) : ?>
                 <input type="hidden" name="id" value="<?=$aparat['id']?>">
               <?php endif; ?>

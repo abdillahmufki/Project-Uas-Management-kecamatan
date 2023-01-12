@@ -20,7 +20,7 @@ class Aparat extends BaseController
             $builder = $db->table('aparats');
             return DataTable::of($builder)
             ->add('action', function($row){
-              return '<a class="btn btn-warning btn-sm text-white" href="'.base_url('aparat/edit/'.$row->id).'">Edit&nbsp;<i class="bi bi-pencil-fill"></i></a> <a class="btn btn-danger btn-sm" data-href="'.base_url('aparat/delete/'.$row->id.'/delete').'" onclick="confirmToDelete(this)"><i class="bi bi-trash-fill"></i>&nbsp; Hapus</a>';
+              return '<a class="btn btn-warning btn-sm text-white" href="'.base_url('admin/aparat/edit/'.$row->id).'">Edit&nbsp;<i class="bi bi-pencil-fill"></i></a> <a class="btn btn-danger btn-sm" data-href="'.base_url('admin/aparat/delete/'.$row->id.'/delete').'" onclick="confirmToDelete(this)"><i class="bi bi-trash-fill"></i>&nbsp; Hapus</a>';
           }, 'last')
           ->toJson(true);
         }
@@ -189,7 +189,7 @@ class Aparat extends BaseController
           $aparat->insert($data);
           session()->setFlashdata('message','Data berhasil ditambahkan');
         }
-        return redirect()->to('aparat');
+        return redirect()->to('admin/aparat');
       }
     }
 
@@ -210,6 +210,6 @@ class Aparat extends BaseController
       $aparat = new AparatModel();
       $aparat->delete($id);
       session()->setFlashdata('message','Data berhasil dihapus!');
-      return redirect('aparat');
+      return redirect('admin/aparat');
     }
 }

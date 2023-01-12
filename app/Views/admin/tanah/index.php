@@ -22,7 +22,7 @@
                 </div>
               <?php endif;?>
               <div style="margin-bottom:var(--bs-card-title-spacer-y)">
-                <a class="btn btn-primary btn" href="<?=base_url('tanah/create')?>">
+                <a class="btn btn-primary btn" href="<?=base_url('admin/tanah/create')?>">
                   Tambah <i class="bi bi-plus"></i>
                 </a>
               </div>
@@ -76,7 +76,7 @@
         "processing": true, //Feature control the processing indicator.
         "serverSide": true, //Feature control DataTables' server-side processing mode.
         "responsive": true,
-        "ajax": "<?= base_url('tanah/get-tanah')?>",
+        "ajax": "<?= base_url('admin/tanah/get-tanah')?>",
         "columns": [
           {data:'nama_pemilik'},
           {data:'luas_tanah'},

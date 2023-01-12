@@ -22,7 +22,7 @@
                     </div>
                 <?php endif; ?>
                 <div style="margin-bottom:var(--bs-card-title-spacer-y)">
-                    <a class="btn btn-primary btn" href="<?= base_url('keputusan-camat/create') ?>">
+                    <a class="btn btn-primary btn" href="<?= base_url('admin/keputusan-camat/create') ?>">
                         Tambah <i class="bi bi-plus"></i>
                     </a>
                 </div>
@@ -77,7 +77,7 @@
             "processing": true, //Feature control the processing indicator.
             "serverSide": true, //Feature control DataTables' server-side processing mode.
             "responsive": true,
-            "ajax": "<?= base_url('keputusan-camat/get-keputusan-camat') ?>",
+            "ajax": "<?= base_url('admin/keputusan-camat/get-keputusan-camat') ?>",
             "columns": [{
                     data: 'nomor'
                 },
